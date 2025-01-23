@@ -1,4 +1,4 @@
-# rathinam-ai-ds
+# Rathinam-Ai-Ds
 Hello Contributors 
 Welcome to the student GitHub repository for the Department of Artificial Intelligence and Data Science (AI & DS) at Rathinam Technical Campus! This repository is dedicated to creating and maintaining a collaborative website for our department.
 
