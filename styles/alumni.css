@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: rgb(0, 0, 128);
+}
+.history{
+    display: flex;
+    width: 80%;
+    margin: 1rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    flex-direction: row;
+}
+.history img{
+    height: 25rem;
+    margin: 2rem;
+}
+
