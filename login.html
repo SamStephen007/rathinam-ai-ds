@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="C:\Users\admin\Desktop\Login page\login.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #cecece;
+        }
+        
+        .login-container {
+            height: 475px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="#" onsubmit="return validate()">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email"><br>
+                <span class="error" id="errorEmail"></span>
+            </div>
+            <div class="form-group">
+                <div class="password">
+                    <input type="password" id="password" name="password" placeholder="Password"><img src="Assets\eye-password-hide.svg" alt="Show" id="eye"><br>
+                    <span class="error" id="errorPassword"></span>
+                </div>
+            </div>
+            <div class="others">
+                <p>By logging in, you agree to our <a href="#">Privacy Policy</a>.</p>
+            </div>
+            <button type="submit">CONFIRM</button>
+            <div class="others">
+                <p>Don't have an account yet ? <a href="signup.html">Sign up</a></p>
+                <p>Forgot your password ? <a href="#">Click here</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="eye_toggle.js">
+    </script>
+    <script>
+        function validate() {
+
+            document.getElementById("errorEmail").innerHTML = "";
+            document.getElementById("errorPassword").innerHTML = "";
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (!validEmail.test(email)) {
+                document.getElementById("errorEmail").innerHTML = "Please provide a valid email address.";
+                document.getElementById("email").focus();
+                return false;
+            }
+
+            if (password.length < 8) {
+                document.getElementById("errorPassword").innerHTML = "Password must be at least 8 characters.";
+                document.getElementById("password").focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
