@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0; 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    height: auto; 
+    overflow-x: hidden; 
+}
+  
+
+.Profile-box {
+    width: 60%;
+    max-width: 800px;
+    height: 220px;
+    border-radius: 10px;  
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    background-color: #fff;  
+    padding: 2px;  
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    font-family: Arial, sans-serif;  
+}
+
+  
+
+.Banner {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+  
+
+.Avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(to right, red, orange, yellow); 
+    padding: 3px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.Avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white; 
+}
+
+.Avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 10px;
+    left: 170px;
+    color: #20201c;
+    padding: 4px;
+    z-index: 1; 
+}
+
+
+.option-icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: rgba(211, 211, 211, 0.7); /* Light grey with slight transparency */
+    display: flex;
+    flex-direction: column; /* Stack dots vertically */
+    align-items: center; /* Center dots horizontally */
+    justify-content: center; /* Center dots vertically */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+.option-icon span {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(51, 51, 51, 0.7); /* Dark grey with slight transparency */
+    border-radius: 50%;
+    margin: 3px 0; /* Vertical spacing between dots */
+    display: block;
+}
+
+.option-icon:active {
+    transform: scale(1.1); /* Slight scaling effect on click */
+}
+
+
+.name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.department {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.bio {
+    font-size: 1.2em; /* Slightly larger for better readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font family */
+    color: #333; /* Darker text for better contrast */
+    line-height: 1.2; /* Increased line-height for readability */
+    margin-bottom: 20px; /* Adds space below bio */
+    padding: 10px 0; /* Adds top and bottom padding for spacing */
+    text-align: justify; /* Justifies the text for a clean, aligned look */
+    max-width: 80%; /* Prevents the bio text from becoming too wide */
+    letter-spacing: 0.5px; /* Slightly increases letter spacing for a more refined look */
+}
