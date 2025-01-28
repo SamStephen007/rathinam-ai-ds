@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management Calendar</title>
+  <link rel="stylesheet" href="styles/event.css">
+</head>
+<body>
+  <div class="hold">
+    <img src="Assets/undraw_done-checking_ra6c.svg" alt="">
+  <div class="container">
+    <div class="header">
+      <button id="prev">❮</button>
+      <h1 id="month-year"></h1>
+      <button id="next">❯</button>
+    </div>
+    <div class="calendar" id="calendar"></div>
+  </div>
+</div>
+
+  <div class="event-modal" id="event-modal">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <h2>Add Event</h2>
+      <input type="text" id="event-title" placeholder="Event Title">
+      <button id="save-event">Save</button>
+    </div>
+  </div>
+
+
+  <script src="event.js"></script>
+</body>
+</html>
