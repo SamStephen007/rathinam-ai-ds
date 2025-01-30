@@ -14,8 +14,29 @@
             <a href="alumni.html">Alumni</a> 
             <a href="">LinkedIn</a>
             <a href="">Github</a>
+            <a href="StudentProfile.html">Student Profile</a>
+            <a href="Templates/addStudent.html">Add Student</a>
         </ul>
+
     </navbar>
-    Enter Content
+    <h1>Welcome To Home Page...</h1>
+    <input type="number" id="id" >
+    <button id="button"> click</button>
+
+    <script>
+        const button = document.getElementById('button');
+    
+        button.addEventListener('click', () => {
+          const id = document.getElementById('id').value;
+    
+          if (!id) {
+            alert('Please enter a valid Student ID.');
+            return;
+          }
+    
+          // Redirect to index.html with the ID as a query parameter
+          window.location.href = `StudentProfile.html?id=${id}`;
+        });
+      </script>
 </body>
 </html>

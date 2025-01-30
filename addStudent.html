@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="../Styles/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div id="header_img"></div>
+    <div class="nav">
+      <a href="index.html" class="nav_data">Home</a>
+      <a href="addStudent.html" class="nav_data active">Add Student</a>
+      <a href="" class="nav_data">Update Student</a>
+    </div>
+  </header>
+
+  <main class="form-container">
+    <h1>Register a New Student</h1>
+    <form id="studentForm">
+
+      <div class="form-group">
+        <label for="studentName"><strong>Name: </strong></label>
+        <input type="text" id="studentName" name="studentName" placeholder="Enter Student Name" required>
+      </div>
+      <div class="form-group">
+        <label for="studentAge"><strong>Age: </strong></label>
+        <input type="number" id="studentAge" name="studentAge" placeholder="Enter Student Age" required>
+      </div>
+      <div class="form-group">
+        <label for="studentPhone"><strong>Phone: </strong></label>
+        <input type="text" id="studentPhone" name="studentPhone" placeholder="Enter Phone Number" required>
+      </div>
+      <div class="form-group">
+        <label for="studentBloodgroup"><strong>Blood Group: </strong></label>
+        <select id="studentBloodgroup" name="studentBloodgroup" required>
+          <option value="" disabled selected>Select Blood Group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="studentImage"><strong>Upload Image: </strong></label>
+        <input type="file" id="studentImage" name="studentImage" accept="image/*" required>
+      </div>
+      <button type="submit" id="submitButton"><strong>Register Student</strong></button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 Student Details. All Rights Reserved.
+  </footer>
+
+  <script >
+    document.addEventListener("DOMContentLoaded", function () {
+      const studentForm = document.getElementById("studentForm");
+  
+      studentForm.addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent page refresh
+  
+          // Collect input values
+          const studentData = {
+              studentName: document.getElementById("studentName").value,
+              studentAge: document.getElementById("studentAge").value,
+              studentPhone: document.getElementById("studentPhone").value,
+              studentBloodgroup: document.getElementById("studentBloodgroup").value
+          };
+  
+          // Convert studentData to JSON Blob
+          const studentBlob = new Blob([JSON.stringify(studentData)], { type: "application/json" });
+  
+          // Create FormData and append student JSON & image
+          const formData = new FormData();
+          formData.append("student", studentBlob);
+          
+          const studentImage = document.getElementById("studentImage").files[0];
+          if (studentImage) {
+              formData.append("image", studentImage);
+          } else {
+              alert("Please select an image.");
+              return;
+          }
+  
+          try {
+              const response = await fetch("http://localhost:8000/AllStudents/student/register", {
+                  method: "POST",
+                  body: formData,
+                  headers: {
+                      // CORS might block Content-Type, so let the browser set it
+                  }
+              });
+  
+              if (response.ok) {
+                  alert("Student registered successfully!");
+                  studentForm.reset(); // Reset the form
+              } else {
+                  const errorMsg = await response.text();
+                  console.error("Server Error:", errorMsg);
+                  alert("Failed to register student.");
+              }
+          } catch (error) {
+              console.error("Network Error:", error);
+              alert("An error occurred while submitting the form.");
+          }
+      });
+  });
+  
+  </script>
+</body>
+</html>
