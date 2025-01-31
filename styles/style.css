@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: white;
+    background-color: black;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+}
+.navbar{
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e5e5e5;
+    margin-bottom: 2rem;
+}
+.navbar-left{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+.navbar-right ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+.navbar-right ul li{
+    cursor: pointer;
+    font-size: 22px;
+    margin-top: 20px 15px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.banner{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto auto;
+    
+    margin-bottom: 85px ;
+}
+.banner .caption{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner>img{
+   border-radius: 50%;
+}
+
+.services{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 75%;
+}
+.services > .box{
+    width: 25%;
+    background-color: rgb(37, 35, 35);
+    color: white;
+    border-radius:10px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    transition: all 0 ease-in 5s;
+}
+
+.services img{
+    height: 450px;
+    border-radius: 8px 0;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.services > .box:hover{
+    transform: scale(1.01);
+    box-shadow: 0 0 15px white;
+}
