@@ -78,7 +78,9 @@ body{
     flex-direction: column;
     justify-content: space-around;
     margin: 20px;
-    transition: all 0 ease-in 5s;
+    transition: all;
+    transition-duration: 0.5s;
+    text-align: center;
 }
 
 a{
@@ -87,6 +89,37 @@ a{
 }
 
 .services > .box:hover{
-    /* box-shadow: 0 0 15px white; */
     background-color: #121212;
+    box-shadow: 0 0 50px #3d3c3cbe;
+    height: auto;
+}
+
+.about{
+    margin-top:3rem ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 80%;
+}
+.about h1{
+    margin-bottom: 5rem;
+}
+.item{
+    display: flex;
+    border-radius: 4px;
+}
+.item img{
+    width: 50%;
+    border-radius: 5px;
+}
+
+.item .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
 }
