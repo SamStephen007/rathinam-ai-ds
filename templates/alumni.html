@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+            color: #333;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin: 1rem 0;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #007bff;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .find {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30%;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .find input {
+            border: none;
+            width: 70%;
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        .find button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .alumni-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .alumni-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .alumni-card:hover {
+            transform: scale(1.05);
+        }
+
+        .read-more {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .social-icons ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons .item a {
+            color: #333;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons .item a:hover {
+            color: #007bff;
+        }
+
+        .social-icons .icon {
+            font-size: 2rem;
+        }
+    </style>
+    <!-- Use the correct FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="find">
+            <input type="text" placeholder="Find Alumni">
+            <button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+        </div>
+    </nav>
+    <h1>Alumni Connect</h1>
+    <div class="alumni-container" id="alumni-list"></div>
+    <div class="modal" id="alumni-modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="alumni-name"></h2>
+        <p id="alumni-details"></p>
+        <div class="follow-message">
+            <button><i class="fas fa-user-plus"></i> Follow</button>
+            <button><i class="fas fa-envelope"></i> Message</button>
+        </div>
+        <div class="social-icons">
+            <ul>
+                <li class="item">
+                    <a href="https://github.com/nithinskumar866" target="_blank">
+                        <i class="fab fa-github icon"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="https://www.linkedin.com/in/nithin-s-52292b278/" target="_blank">
+                        <i class="fab fa-linkedin icon"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="https://www.instagram.com/yourprofile" target="_blank">
+                        <i class="fab fa-instagram icon"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="https://www.hackerrank.com/profile/nithinsofficial1e" target="_blank">
+                        <i class="fab fa-hackerrank icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const alumniData = [
+            { 
+                name: "Chatbot Raj", 
+                description: "vellai illama chumma dhan irrukan ", 
+                details: "Graduated in 2020. Works on AI research.",
+                github: "https://github.com/AKASH-RJ", 
+                leetcode: "https://leetcode.com/u/nithinsofficial86/", 
+                linkedin: "https://www.linkedin.com/in/nithin-s-52292b278/" 
+            },
+            { 
+                name: "Figma Prasath", 
+                description: "edu nalum 2 min la mudichuralam nu solli 2 varam akkuvan", 
+                details: "Graduated in 2018. Specializes in big data.",
+                github: "https://github.com/Hari7070", 
+                leetcode: "#", 
+                linkedin: "https://www.linkedin.com/in/hariprasath2105/" 
+            }
+        ];
+
+        function loadAlumni() {
+            const container = document.getElementById("alumni-list");
+            alumniData.forEach((alumni, index) => {
+                const card = document.createElement("div");
+                card.className = "alumni-card";
+                card.innerHTML = `
+                    <h3>${alumni.name}</h3>
+                    <p>${alumni.description}</p>
+                    <button class="read-more" onclick="showDetails(${index})">Read More</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showDetails(index) {
+            const modal = document.getElementById("alumni-modal");
+            document.getElementById("alumni-name").innerText = alumniData[index].name;
+            document.getElementById("alumni-details").innerText = alumniData[index].details;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("alumni-modal").style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", loadAlumni);
+    </script>
+</body>
+</html>

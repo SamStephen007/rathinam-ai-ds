@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Management Calendar</title>
-  <link rel="stylesheet" href="styles/event.css">
+  <link rel="stylesheet" href="../styles/event.css">
 </head>
-<body style="background-image: url('Assets/splitting-time-in-quarters.webp')">
-  <div class="container">
-    <div class="header">
-      <button id="prev">❮</button>
-      <h1 id="month-year"></h1>
-      <button id="next">❯</button>
+
+<body>
+  <div class="hold">
+    <img src="../Assets/undraw_done-checking_ra6c.svg" alt="">
+    <div class="container">
+      <div class="header">
+        <button id="prev">❮</button>
+        <h1 id="month-year"></h1>
+        <button id="next">❯</button>
+      </div>
+      <div class="calendar" id="calendar"></div>
     </div>
-    <div class="calendar" id="calendar"></div>
   </div>
 
   <div class="event-modal" id="event-modal">
@@ -25,6 +30,8 @@
     </div>
   </div>
 
-  <script src="event.js"></script>
+
+  <script src="/scripts/event.js"></script>
 </body>
+
 </html>
